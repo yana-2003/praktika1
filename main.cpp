@@ -2,19 +2,19 @@
 #include <cmath>
 #define PI 3.141593
 using namespace std;
-class Triangle  
+class Triangle
 {
     private:
-    float x;/*сторона*/
-    float a;/*1 угол*/
-    float b;/*2 угол*/
+    double x;/*сторона*/
+    double a;/*1 угол*/
+    double b;/*2 угол*/
 
-     float fy ()/*функция вычисления стороны y*/
+    double fy ()/*функция вычисления стороны y*/
      {
         return x * sin(a*PI/180)/sin((180-a-b)*PI/180);
      }
 
-    float fz ()/*функция вычисления стороны z*/
+    double fz ()/*функция вычисления стороны z*/
      {
         return x * sin(b*PI/180)/sin((180-a-b)*PI/180);
      }
@@ -28,7 +28,7 @@ class Triangle
         cout << "Вызвался конструктор" << endl;
     }
 
-    Triangle(float x, float a, float b)/*конструктор с параметрами*/
+    Triangle(double x, double a, double b)/*конструктор с параметрами*/
     {
         Set_x(x);
         Set_a(a);
@@ -43,19 +43,19 @@ class Triangle
         this->b = t.b;
         cout << "Вызвался конструктор копирования" << endl;
     }
-    float Get_x()
+    double Get_x()
     {
         return x;
     }
-    float Get_a()
+    double Get_a()
     {
         return a;
     }
-    float Get_b()
+    double Get_b()
     {
         return b;
     }
-    void Set_x(float x)
+    void Set_x(double x)
     {
         if (x>0)
         {
@@ -63,7 +63,7 @@ class Triangle
         }
         else cout << "Неправильно ввели значение" << endl;
     }
-    void Set_a(float a)
+    void Set_a(double a)
     {
         if (a>0 && a<180)
         {
@@ -71,7 +71,7 @@ class Triangle
         }
         else cout << "Неправильно ввели значение" << endl;
     }
-    void Set_b(float b)
+    void Set_b(double b)
     {
       if (b>0 && b<180 )
         {
@@ -81,8 +81,8 @@ class Triangle
     }
     void f1 ()/*вычисление длин всех сторон*/
     {
-        float y;
-        float z;
+        double y;
+        double z;
         y = fy();
         z = fz();
         cout << "1 сторона: " << y << endl << "2 сторона: " << z << endl;
@@ -90,10 +90,10 @@ class Triangle
 
     void f2 ()/*вычисление биссекрис всех сторон*/
     {
-        float p;
-        float l;
-        float y;
-        float z;
+        double p;
+        double l;
+        double y;
+        double z;
         y = fy ();
         z = fz ();
         p = (x + y + z)/2;
@@ -120,7 +120,7 @@ class Triangle
 int main()
 {   setlocale(LC_ALL,"rus");
     int menu;
-    int x, a, b;
+    double x, a, b;
     cout << "Введите сторону треугольника x:" << endl;
     cin >> x;
     cout << "Введите первый угол треугольника a:" << endl;
@@ -132,7 +132,7 @@ int main()
         cout << "Вы неправильно ввели данные. Такого треугольника не существует."<< endl;
         exit (-1);
      }
-    Triangle tr(x, a, b);
+    Triangle tr(x, a, b);/*треугольник с которым будет сравниваться второй треугольник*/
     cout << "1 - Получить сторону треугольника x " << endl;
     cout << "2 - Получить первый угол треугольника a" << endl;
     cout << "3 - Получить второй угол треугольника b" << endl;
